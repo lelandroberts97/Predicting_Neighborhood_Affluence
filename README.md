@@ -1,4 +1,4 @@
-# Utilizing Yelp Price Estimates to Identify Neighborhood Affluency
+# Predicting Neighborhood Affluence Using Yelp's Price Estimates
 
 By: Vanessa Alvarado, Leland Roberts, Danielle Mizrachi, Jessica Ertel
 
@@ -20,7 +20,7 @@ New Light Technologies was contacted by The Wildflower Cafe, a high end restaura
     3. [CT Gov](https://git.generalassemb.ly/danielle-mizrachi/yelp/blob/master/code/04_CT_Income_Data_Cleaning.ipynb)
 3. [Combine Data](https://git.generalassemb.ly/danielle-mizrachi/yelp/blob/master/code/05_Combining_Data.ipynb)
 4. [Exploratory Data Analysis](https://git.generalassemb.ly/danielle-mizrachi/yelp/blob/master/code/06_EDA.ipynb)
-5. [Modelling](https://git.generalassemb.ly/danielle-mizrachi/yelp/blob/master/code/07_Modeling.ipynb)
+5. [Modeling](https://git.generalassemb.ly/danielle-mizrachi/yelp/blob/master/code/07_Modeling.ipynb)
 
 ### Data Dictionary
 |Feature|Type|Description|
@@ -96,7 +96,7 @@ Our baseline model had a high score of 78% with very imbalanced classes. When th
 
 Our next approach involved using both regression and classification models on the CT Gov dataset. This dataset also had imbalanced classes and therefore did not result in better scores. As a result we decided to use linear regression models using per capita income and achieved our best performing model with a train r-squared score of .19 and test score of .16. 
 
-### Conclusions and Limitations
+## Conclusions and Limitations
 The biggest limitation we faced was the size of our dataset. We were unable to pull additional data from Yelp because of their API limit and we chose to aggregate restaurants by city, leaving us with only 160 observations to work with. This is not nearly enough data! 
 
 The number of zip codes we gathered from each source varied. Yelp collects restuarants from more zip codes than the IRS or CT Gov sources contained because it sorts towns into subsections. We were forced to drop this added level of specificity from the analysis when modeling with the CT Gov data, which did not provide data on the same number of zipcodes. Additionally, when scraping data from Yelp by zipcode, the API pulled restaurants within a certain radius of that zipcode. This resulted in gathering many duplicates and uncertainty around completeness, especially since the API capped at 50. The reason for the lack of data was not due to the API limit, but rather due to the limited amount of cities in Connecticut that we could include in our analysis. Therefore, we cannot confidently advise on where The Wildflower Cafe should expand their business. 
@@ -104,7 +104,7 @@ The number of zip codes we gathered from each source varied. Yelp collects restu
 _How does Yelp define their pricing scale and is this consistent across different parts of the U.S.?_    
 Evaluating the distribution of median household income in light of the poor modeling results led us to some fundamental questions: Is the price range for each category consistent across different regions? How and who actually classifies restaurant prices? In other words, does $$$ mean the same in a low and high income city? The [answer is astounding](https://www.quora.com/How-are-dollar-signs-calculated-on-Yelp-and-who-calculates-them/answer/Terry-Lambert)! The dollar sign classifications are defined by customers themselves, as part of a survey that is collected when a customer posts a review of the restaurant. The fact that this information is crowd sourced and somewhat subjective is interesting, yet problematic for our investigation. Using Yelp pricing scales might be a better indication of how residents of a certain city rate the cost of product and services in terms of their personal affluence. From this analysis, it is not an accurate predictor of median household income, mean household income, per capita income or adjusted gross income.
 
-### Future Work
+## Future Work
 For future work, we would gather additional data from different sources and further investigate the data that is available by the IRS. We would expand our search radius to inlcude the North East region, East Coast, or potentially include the U.S. in its entirety. To gather that data we would utilize the U.S Census API to aggregate median, mean and per-capita income. Once we have that data in hand we would have to increase our radius to attain a larger dataset of Yelp data. Having a more robust dataset would allow us to do more complex modelling.
 
 *This project was completed through General Assembly's Data Science Immersive Program.*
